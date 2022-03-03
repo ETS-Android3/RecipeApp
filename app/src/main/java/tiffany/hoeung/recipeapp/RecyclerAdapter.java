@@ -29,7 +29,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.recipeName.setText(recipes.get(position).getRecipeName());
-        holder.recipeImage.setImageDrawable(recipes.get(position).getRecipeImage());
+        holder.recipeImage.setImageDrawable(recipes.get(position).getRecipeImageCard());
     }
 
     @Override
