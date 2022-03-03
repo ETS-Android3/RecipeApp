@@ -4,19 +4,21 @@ import android.graphics.drawable.Drawable;
 
 public class Recipe {
     public String recipeName;
-    public Drawable recipeImage;
+    public Drawable recipeImageCard;
+    public Drawable recipeImageInfo;
     public String[] ingredients;
     public String[] instructions;
 
-    public Recipe(String recipeName, Drawable recipeImage) {
+    public Recipe(String recipeName, Drawable recipeImageCard) {
         this.recipeName = recipeName;
-        this.recipeImage = recipeImage;
+        this.recipeImageCard = recipeImageCard;
     }
 
-    public Recipe(String recipeName, Drawable recipeImage,
+    public Recipe(String recipeName, Drawable recipeImageCard, Drawable recipeImageInfo,
                   String[] ingredients, String[] instructions) {
         this.recipeName = recipeName;
-        this.recipeImage = recipeImage;
+        this.recipeImageCard = recipeImageCard;
+        this.recipeImageInfo = recipeImageInfo;
         this.ingredients = ingredients;
         this.instructions = instructions;
     }
@@ -25,8 +27,12 @@ public class Recipe {
         return recipeName;
     }
 
-    public Drawable getRecipeImage() {
-        return recipeImage;
+    public Drawable getRecipeImageCard() {
+        return recipeImageCard;
+    }
+
+    public Drawable getRecipeImageInfo() {
+        return recipeImageInfo;
     }
 
     public String[] getIngredients() {

@@ -6,33 +6,95 @@
     tools:context=".RecipeInfoFragment">
 
     <RelativeLayout
-        android:id="@+id/title_relativelayout"
+        android:id="@+id/image_relativelayout"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="180dp"
         android:background="@color/theme_color">
 
-        <TextView
-            android:id="@+id/recipeInfo_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Spaghetti and Meatballs"
-            android:textColor="@color/menu_background"
-            android:layout_centerInParent="true"
-            android:textSize="20sp"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="75dp">
-
-        <TextView
+        <ImageView
+            android:id="@+id/info_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Ingredients: none"/>
+            android:src="@drawable/spaghetti_2"
+            android:scaleType="centerCrop"/>
 
     </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/image_relativelayout">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/name_relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/info_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:padding="10dp"
+                    android:text="Spaghetti and Meatballs"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/ingredient_relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name_relativeLayout">
+
+                <TextView
+                    android:id="@+id/ingredients_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="INGREDIENTS"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/info_ingredients"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ingredients_label"
+                    android:paddingHorizontal="10dp"
+                    android:text="@string/ingredients_testString"
+                    android:textSize="15dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ingredient_relativeLayout">
+
+                <TextView
+                    android:id="@+id/instructions_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="INSTRUCTIONS"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/info_instructions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/instructions_label"
+                    android:paddingHorizontal="10dp"
+                    android:text="@string/ingredients_testString"
+                    android:textSize="15dp" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
