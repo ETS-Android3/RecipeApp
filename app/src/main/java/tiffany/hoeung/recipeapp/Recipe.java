@@ -9,11 +9,6 @@ public class Recipe {
     public String[] ingredients;
     public String[] instructions;
 
-    public Recipe(String recipeName, Drawable recipeImageCard) {
-        this.recipeName = recipeName;
-        this.recipeImageCard = recipeImageCard;
-    }
-
     public Recipe(String recipeName, Drawable recipeImageCard, Drawable recipeImageInfo,
                   String[] ingredients, String[] instructions) {
         this.recipeName = recipeName;
