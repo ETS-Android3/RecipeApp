@@ -3,10 +3,13 @@ package tiffany.hoeung.recipeapp;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,7 +19,9 @@ import java.util.Arrays;
 public class RecipeInfoFragment extends Fragment {
 
     private ArrayList<Recipe> recipeList = new ArrayList<>();
+    private ArrayList<Recipe> favoritesList = new ArrayList<>();
     private int position;
+    private NavController navController;
 
     private ImageView foodImage;
     private TextView titleText;
@@ -48,8 +53,56 @@ public class RecipeInfoFragment extends Fragment {
         // this is the recipe list + recipe we want to display
         recipeList = (ArrayList<Recipe>) getArguments().getSerializable("recipes");
         position = getArguments().getInt("position");
-
+        favoritesList = (ArrayList<Recipe>) getArguments().getSerializable("favorites");
+        // Fills out recipe page with appropriate info
         updateLayout();
+
+        // For navigation
+        NavHostFragment navHostFragment =
+                (NavHostFragment) this.getActivity().getSupportFragmentManager().findFragmentById(R.id.fragmentContainerView);
+        if (navHostFragment != null) {
+            navController = navHostFragment.getNavController();
+        }
+
+        view.findViewById(R.id.button_home).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("recipes", recipeList);
+                bundle.putSerializable("favorites", favoritesList);
+                bundle.putInt("screen", 0);
+
+                navController.navigate(R.id.info_to_list, bundle);
+            }
+        });
+
+        view.findViewById(R.id.button_favorites).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("recipes", recipeList);
+                bundle.putSerializable("favorites", favoritesList);
+                bundle.putInt("screen", 1);
+
+                navController.navigate(R.id.info_to_list, bundle);
+            }
+        });
+
+        CheckBox favoriteButton = view.findViewById(R.id.button_isFavorited);
+        //Check if the current recipe is already faovrited
+        if(favoritesList.contains(recipeList.get(position)))
+            favoriteButton.setChecked(true);
+
+        favoriteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(favoriteButton.isChecked()) {
+                    favoritesList.add(recipeList.get(position));
+                } else {
+                    favoritesList.remove(recipeList.get(position));
+                }
+            }
+        });
 
         return view;
     }
@@ -70,6 +123,7 @@ public class RecipeInfoFragment extends Fragment {
         if(ingredients != null) {
             for(String str : ingredients)
                 strBuilder.append(str + "\n");
+
 
             ingredientsText.setText(strBuilder.toString());
         }
