@@ -2,14 +2,27 @@ package tiffany.hoeung.recipeapp;
 
 import android.graphics.drawable.Drawable;
 
-public class Recipe {
+import java.io.Serializable;
+
+public class Recipe implements Serializable {
     public String recipeName;
-    public Drawable recipeImageCard;
-    public Drawable recipeImageInfo;
+    /*public Drawable recipeImageCard;
+    public Drawable recipeImageInfo;*/
+    public int recipeImageCard;
+    public int recipeImageInfo;
     public String[] ingredients;
     public String[] instructions;
 
-    public Recipe(String recipeName, Drawable recipeImageCard, Drawable recipeImageInfo,
+    /*public Recipe(String recipeName, Drawable recipeImageCard, Drawable recipeImageInfo,
+                  String[] ingredients, String[] instructions) {
+        this.recipeName = recipeName;
+        this.recipeImageCard = recipeImageCard;
+        this.recipeImageInfo = recipeImageInfo;
+        this.ingredients = ingredients;
+        this.instructions = instructions;
+    }*/
+
+    public Recipe(String recipeName, int recipeImageCard, int recipeImageInfo,
                   String[] ingredients, String[] instructions) {
         this.recipeName = recipeName;
         this.recipeImageCard = recipeImageCard;
@@ -22,11 +35,11 @@ public class Recipe {
         return recipeName;
     }
 
-    public Drawable getRecipeImageCard() {
+    public int getRecipeImageCard() {
         return recipeImageCard;
     }
 
-    public Drawable getRecipeImageInfo() {
+    public int getRecipeImageInfo() {
         return recipeImageInfo;
     }
 
