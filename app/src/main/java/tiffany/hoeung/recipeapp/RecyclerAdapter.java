@@ -7,14 +7,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder>{
     private ArrayList<Recipe> recipes;
     private OnNoteListener onNoteListener;
+    private ListRecipeFragment frag;
 
-    public RecyclerAdapter(ArrayList<Recipe> recipeList, OnNoteListener onNoteListener) {
+    public RecyclerAdapter(ArrayList<Recipe> recipeList, OnNoteListener onNoteListener, ListRecipeFragment frag) {
+        this.frag = frag;
         recipes = recipeList;
         this.onNoteListener = onNoteListener;
     }
@@ -29,7 +32,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.recipeName.setText(recipes.get(position).getRecipeName());
-        holder.recipeImage.setImageDrawable(recipes.get(position).getRecipeImageCard());
+        holder.recipeImage.setImageDrawable(frag.getContext().getDrawable(recipes.get(position).getRecipeImageCard()));
     }
 
     @Override

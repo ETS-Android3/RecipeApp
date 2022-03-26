@@ -27,10 +27,10 @@ public class ListRecipeFragment extends Fragment implements RecyclerAdapter.OnNo
     private RecyclerAdapter adapterRV;
     private RecyclerAdapter favoritesAdapterRV;
     private RecyclerView recipeRV;
+    private int screen = 0;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        int screen = 0;
         super.onActivityCreated(savedInstanceState);
         //get layout manager (aka, what format RV should take)
         layoutManager = new GridLayoutManager(this.getActivity(), 2);
@@ -45,8 +45,8 @@ public class ListRecipeFragment extends Fragment implements RecyclerAdapter.OnNo
             screen = getArguments().getInt("screen");
         }
         //create a new recycler view adapter
-        adapterRV = new RecyclerAdapter(recipeList, this);
-        favoritesAdapterRV = new RecyclerAdapter(favoritesList, this);
+        adapterRV = new RecyclerAdapter(recipeList, this, this);
+        favoritesAdapterRV = new RecyclerAdapter(favoritesList, this, this);
         // set the recycler view's adapter
         if(screen == 0)
             recipeRV.setAdapter(adapterRV);
@@ -79,10 +79,20 @@ public class ListRecipeFragment extends Fragment implements RecyclerAdapter.OnNo
         view.findViewById(R.id.button_favorites).setOnClickListener(view1 -> {
             System.out.println("Favorites has " + favoritesList.size() + " recipes in it");
             recipeRV.setAdapter(favoritesAdapterRV);
+            screen = 1;
         });
 
         view.findViewById(R.id.button_home).setOnClickListener(view1 -> {
             recipeRV.setAdapter(adapterRV);
+            screen = 0;
+        });
+
+        view.findViewById(R.id.button_new_recipe).setOnClickListener(view1 -> {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("recipes", recipeList);
+            bundle.putSerializable("favorites", favoritesList);
+
+            navController.navigate(R.id.list_to_new, bundle);
         });
 
         return view;
@@ -94,6 +104,7 @@ public class ListRecipeFragment extends Fragment implements RecyclerAdapter.OnNo
         // this is where we switch to the recipe screen
         Bundle bundle = new Bundle();
         bundle.putInt("position", position);
+        bundle.putInt("screen", screen);
         bundle.putSerializable("recipes", recipeList);
         bundle.putSerializable("favorites", favoritesList);
 

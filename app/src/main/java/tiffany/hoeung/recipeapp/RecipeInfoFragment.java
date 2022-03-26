@@ -21,6 +21,7 @@ public class RecipeInfoFragment extends Fragment {
     private ArrayList<Recipe> recipeList = new ArrayList<>();
     private ArrayList<Recipe> favoritesList = new ArrayList<>();
     private int position;
+    private int screen;
     private NavController navController;
 
     private ImageView foodImage;
@@ -53,6 +54,7 @@ public class RecipeInfoFragment extends Fragment {
         // this is the recipe list + recipe we want to display
         recipeList = (ArrayList<Recipe>) getArguments().getSerializable("recipes");
         position = getArguments().getInt("position");
+        screen = getArguments().getInt("screen");
         favoritesList = (ArrayList<Recipe>) getArguments().getSerializable("favorites");
         // Fills out recipe page with appropriate info
         updateLayout();
@@ -108,11 +110,13 @@ public class RecipeInfoFragment extends Fragment {
     }
 
     private void updateLayout() {
-        Recipe recipe = recipeList.get(position);
+        Recipe recipe;
+        if(screen == 0)
+            recipe = recipeList.get(position);
+        else
+            recipe = favoritesList.get(position);
         //setting image
-        if(recipe.getRecipeImageInfo() != null) {
-            foodImage.setImageDrawable(recipe.getRecipeImageInfo());
-        }
+        foodImage.setImageDrawable(getContext().getDrawable(recipe.getRecipeImageInfo()));
 
         // set name of recipe
         titleText.setText(recipe.recipeName);

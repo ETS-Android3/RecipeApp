@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_navigation.xml"
+    android:label="fragment_new_recipe"
     app:startDestination="@id/listRecipeFragment">
 
     <fragment
         android:id="@+id/recipeInfoFragment"
         android:name="tiffany.hoeung.recipeapp.RecipeInfoFragment"
         android:label="fragment_recipe_info"
-        tools:layout="@layout/fragment_recipe_info" >
+        tools:layout="@layout/fragment_recipe_info">
         <action
             android:id="@+id/info_to_list"
             app:destination="@id/listRecipeFragment" />
@@ -18,9 +19,20 @@
         android:id="@+id/listRecipeFragment"
         android:name="tiffany.hoeung.recipeapp.ListRecipeFragment"
         android:label="fragment_list_recipe"
-        tools:layout="@layout/fragment_list_recipe" >
+        tools:layout="@layout/fragment_list_recipe">
         <action
             android:id="@+id/list_to_info"
             app:destination="@id/recipeInfoFragment" />
+        <action
+            android:id="@+id/list_to_new"
+            app:destination="@id/newRecipeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newRecipeFragment"
+        android:name="tiffany.hoeung.recipeapp.NewRecipeFragment"
+        android:label="fragment_new_recipe">
+        <action
+            android:id="@+id/new_to_list"
+            app:destination="@id/listRecipeFragment" />
     </fragment>
 </navigation>
