@@ -22,8 +22,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
 
     private static final String ID_FIELD = "id";
     private static final String TITLE_FIELD = "title";
-    private static final String IMAGE100_FIELD = "image100";
-    private static final String IMAGE450_FIELD = "image450";
+    private static final String IMAGE_FIELD = "image";
     private static final String INGREDIENTS_FIELD = "ingre";
     private static final String INSTRUCTIONS_FIELD = "instr";
     private static final String FAVORITED_FIELD = "fave";
@@ -53,10 +52,8 @@ public class SQLiteManager extends SQLiteOpenHelper {
                 .append(" INT, ")
                 .append(TITLE_FIELD)
                 .append(" TEXT, ")
-                .append(IMAGE100_FIELD)
-                .append(" INT, ")
-                .append(IMAGE450_FIELD)
-                .append(" INT, ")
+                .append(IMAGE_FIELD)
+                .append(" BLOB, ")
                 .append(INGREDIENTS_FIELD)
                 .append(" TEXT, ")
                 .append(INSTRUCTIONS_FIELD)
@@ -80,8 +77,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(ID_FIELD, recipe.getId());
         contentValues.put(TITLE_FIELD, recipe.getRecipeName());
-        contentValues.put(IMAGE100_FIELD, recipe.getRecipeImageCard());
-        contentValues.put(IMAGE450_FIELD, recipe.getRecipeImageInfo());
+        contentValues.put(IMAGE_FIELD, recipe.getImageByte());
         contentValues.put(INGREDIENTS_FIELD, recipe.getIngredientsString());
         contentValues.put(INSTRUCTIONS_FIELD, recipe.getInstructionsString());
         contentValues.put(FAVORITED_FIELD, recipe.getIsFavorited());
@@ -95,16 +91,15 @@ public class SQLiteManager extends SQLiteOpenHelper {
 
         try (Cursor result = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME, null)) {
             if(result.getCount() != 0) {
-                while(result.moveToNext() && result.getInt(8) != 1) {
+                while(result.moveToNext() && result.getInt(7) != 1) {
                     int id = result.getInt(1);
                     String title = result.getString(2);
-                    int image100 = result.getInt(3);
-                    int image450 = result.getInt(4);
-                    String ingredients = result.getString(5);
-                    String instructions = result.getString(6);
-                    int favorited = result.getInt(7);
+                    byte[] imageByte = result.getBlob(3);
+                    String ingredients = result.getString(4);
+                    String instructions = result.getString(5);
+                    int favorited = result.getInt(6);
 
-                    Recipe recipe = new Recipe(id, title, image100, image450, stringToArray(ingredients, "\n"),
+                    Recipe recipe = new Recipe(id, title, imageByte, stringToArray(ingredients, "\n"),
                             stringToArray(instructions, "\n\n"));
                     //Add the recipe
                     Recipe.recipeArrayList.add(recipe);
@@ -123,8 +118,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
         contentValues.put(TITLE_FIELD, recipe.getRecipeName());
         contentValues.put(INGREDIENTS_FIELD, recipe.getIngredientsString());
         contentValues.put(INSTRUCTIONS_FIELD, recipe.getInstructionsString());
-        contentValues.put(IMAGE100_FIELD, recipe.getRecipeImageCard());
-        contentValues.put(IMAGE450_FIELD, recipe.getRecipeImageInfo());
+        contentValues.put(IMAGE_FIELD, recipe.getImageByte());
         contentValues.put(FAVORITED_FIELD, recipe.getIsFavorited());
         contentValues.put(DELETED_FIELD, recipe.getIsDeleted());
 

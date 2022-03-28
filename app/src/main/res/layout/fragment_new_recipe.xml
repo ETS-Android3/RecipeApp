@@ -132,116 +132,36 @@
         </RelativeLayout>
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="470dp"
-        android:weightSum="2">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_marginStart="60dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Image\n100x100"
-                android:textAlignment="center"
-                android:textSize="15sp"/>
-
-        </LinearLayout>
-
-        <LinearLayout android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_marginStart="60dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Image\n450x200"
-                android:textAlignment="center"
-                android:textSize="15sp"/>
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="510dp"
-        android:weightSum="2">
+        android:layout_marginTop="480dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+        <Button
+            android:id="@+id/recipe_imageBtn100"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload Image"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            android:backgroundTint="#A3A1A1"/>
 
-            <Button
-                android:id="@+id/recipe_imageBtn100"
-                android:layout_marginStart="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Upload Image"
-                android:textAlignment="center"
-                android:textSize="15sp"
-                android:backgroundTint="#A3A1A1"/>
+    </RelativeLayout>
 
-        </LinearLayout>
-
-        <LinearLayout android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <Button
-                android:id="@+id/recipe_imageBtn450"
-                android:layout_marginStart="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Upload Image"
-                android:textAlignment="center"
-                android:textSize="15sp"
-                android:backgroundTint="#A3A1A1"/>
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:layout_marginTop="560dp"
-        android:weightSum="2">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
+        android:layout_marginTop="540dp">
             <ImageView
                 android:id="@+id/recipe_image100"
+                android:layout_centerInParent="true"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_gravity="center"
+                android:scaleType="centerCrop"
                 android:layout_marginLeft="45dp"
-                android:src="@drawable/spaghetti"/>
-
-        </LinearLayout>
-
-        <LinearLayout android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/recipe_image450"
-                android:layout_width="250dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
                 android:src="@drawable/spaghetti_2"/>
-
-        </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/options_layout"

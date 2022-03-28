@@ -22,6 +22,7 @@
             android:layout_height="100dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/spaghetti"
+            android:scaleType="centerCrop"
             android:contentDescription="@string/image_desc"/>
 
         <TextView

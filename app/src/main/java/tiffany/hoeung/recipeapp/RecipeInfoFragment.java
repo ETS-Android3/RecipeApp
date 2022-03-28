@@ -153,7 +153,7 @@ public class RecipeInfoFragment extends Fragment {
         else
             recipe = Recipe.favoritesArrayList.get(position);
         //setting image
-        foodImage.setImageDrawable(getContext().getDrawable(recipe.getRecipeImageInfo()));
+        foodImage.setImageBitmap(recipe.getImage());
 
         // set name of recipe
         titleText.setText(recipe.recipeName);

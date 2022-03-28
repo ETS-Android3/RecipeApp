@@ -1,6 +1,11 @@
 package tiffany.hoeung.recipeapp;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.net.Uri;
+
+import androidx.annotation.AnyRes;
+import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
@@ -39,12 +44,13 @@ public class RecipeArchive {
                 "About 15 minutes before the sauce finishes cooking, bring a large pot of salted water to the boil, and then cook pasta according to package directions, but check for doneness a minute or two before the suggested cooking time.",
                 "Take the sauce off of the heat, and then stir in the basil. Toss in the cooked pasta, and then leave for a minute so that the pasta absorbs some of the sauce. Toss again, and then serve with parmesan sprinkled on top."};
 
+        Uri imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.spaghetti_2);
+
         // listRecipeFragment.getContext() allows us to access the assets folder.
         // .getDrawable gets image. The second is for the larger recipe screen
-        recipes.add(new Recipe(recipes.size()+1,"Spaghetti and meatballs", R.drawable.spaghetti,
-                R.drawable.spaghetti_2, ingredients, instructions));
-
-        System.out.println("spaghetti: " + R.drawable.spaghetti);
+        recipes.add(new Recipe(recipes.size()+1,"Spaghetti and meatballs",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
 
         // Cottage Pie
         ingredients = new String[] {"1 pound lean ground beef",
@@ -68,8 +74,12 @@ public class RecipeArchive {
                 "To Make Potato Topping: Place diced potatoes in a medium saucepan. Cover with water and place over high heat. Allow to come to a boil. Boil for 15 minutes, or until potatoes are tender. Drain.",
                 "Mash potatoes until smooth, then add butter or margarine, followed by milk. Whip until fluffy. Add salt and pepper to taste. Spread potatoes over beef filling. Sprinkle with grated Cheddar cheese.",
                 "Bake in preheated oven for 25 minutes, until top is browned and cheese is bubbly."};
-        recipes.add(new Recipe(recipes.size()+1,"Cottage Pie", R.drawable.cottage_pie,
-                R.drawable.cottage_pie2, ingredients, instructions));
+
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.cottage_pie2);
+
+        recipes.add(new Recipe(recipes.size()+1,"Cottage Pie",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
 
         System.out.println("cottage_pie: " + R.drawable.cottage_pie);
 
@@ -82,8 +92,12 @@ public class RecipeArchive {
                 "oil, for deep frying"};
         instructions = new String[] {"Mix all the cream cheese, crab meat, sugar, and salt in a bowl. Stir to blend well. Place about 1 tablespoon of the cream cheese filling in the middle of a wonton wrapper. Dab some water on the outer edges of the wonton wrapper and fold the two ends of the wrapper together. Fold the other two ends to make a tiny parcel pictured below. Pinch to seal tight and make sure that there is no leakage.",
                 "Heat up a pot of oil for deep-frying and fry the crab rangoon until golden brown. Dish out with a strainer or slotted spoon, draining the excess oil by laying the crab rangoon on a dish lined with paper towels. Let the crab rangoon cools down a bit before serving them with sweet and sour sauce."   };
-        recipes.add(new Recipe(recipes.size()+1,"Crab Rangoon", R.drawable.crab_rangoon,
-                R.drawable.crab_rangoon2, ingredients, instructions));
+
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.crab_rangoon2);
+
+        recipes.add(new Recipe(recipes.size()+1,"Crab Rangoon",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
 
         // Zaru Soba
         ingredients = new String[] {"Salt",
@@ -95,8 +109,12 @@ public class RecipeArchive {
                 "Minced scallions or toasted sesame seeds for garnish"};
         instructions = new String[] {"Bring a large pot of water to a boil, and salt it. Cook noodles until tender but not mushy. Drain, and quickly rinse under cold running water until cold. Drain well.",
                 "Combine dashi or stock, soy sauce and mirin. Taste, and add a little more soy if the flavor is not strong enough. Serve noodles with garnishes, with sauce on side for dipping (or spooning over)."};
-        recipes.add(new Recipe(recipes.size()+1,"Zaru Soba", R.drawable.zaru_soba,
-                R.drawable.zaru_soba2, ingredients, instructions));
+
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.zaru_soba2);
+
+        recipes.add(new Recipe(recipes.size()+1,"Zaru Soba",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
 
         // Chicken Enchiladas
         ingredients = new String[] {"4 cups cooked, shredded chicken",
@@ -112,8 +130,10 @@ public class RecipeArchive {
                 "In a skillet, warm the enchilada sauce. Working with one tortilla at a time, dip it in the enchilada sauce until lightly coated. Scoop ⅓ cup of the enchilada filling into the tortilla and roll tightly. arrange (see side down) in a 9X13 baking dish and repeat with remaining tortillas.",
                 "Pour remaining enchilada sauce over the prepared enchiladas followed by the remaining cheese.",
                 "Bake for 25 minutes, until cheese is bubbling."};
-        recipes.add(new Recipe(recipes.size()+1,"Chicken Enchiladas", R.drawable.chicken_enchiladas,
-                R.drawable.chicken_enchiladas2, ingredients, instructions));
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.chicken_enchiladas2);
+        recipes.add(new Recipe(recipes.size()+1,"Chicken Enchiladas",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
 
         ingredients = new String[] {"1 1/2 pounds skirt steak, cut into 4-inch-long pieces, then cut against the grain into 1/4-inch-thick slices",
                  "Salt and freshly ground pepper",
@@ -133,10 +153,26 @@ public class RecipeArchive {
                 "In a large skillet over medium-high heat, heat the oil until shimmering, about 1 minute. Add the beef and cook, stirring, until cooked through, 3 to 5 minutes.",
                 "Remove the beef from the skillet and set aside. Allow the liquid in the pan to reduce until thickened, about 4 minutes. Add the garlic and scallions and cook 1 minute more. " +
                 "Add the mushrooms and cook for 2 to 3 minutes more. Add the snow peas, baby corn and bell pepper and continue cooking until all the vegetables are crisp-tender, about 2 minutes. Return the beef to the skillet and toss to combine."};
-
-        recipes.add(new Recipe(recipes.size()+1,"Beef Stir-Fry", R.drawable.beef_stirfry,
-                R.drawable.beef_stirfry2, ingredients, instructions));
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.beef_stirfry2);
+        recipes.add(new Recipe(recipes.size()+1,"Beef Stir-Fry",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
 
         return recipes;
+    }
+
+    /**
+     * get uri to drawable or any other resource type if u wish
+     * @param context - context
+     * @param drawableId - drawable res id
+     * @return - uri
+     */
+    public static final Uri getUriToDrawable(@NonNull Context context,
+                                             @AnyRes int drawableId) {
+        Uri imageUri = Uri.parse(context.getContentResolver().SCHEME_ANDROID_RESOURCE
+                + "://" + context.getResources().getResourcePackageName(drawableId)
+                + '/' + context.getResources().getResourceTypeName(drawableId)
+                + '/' + context.getResources().getResourceEntryName(drawableId) );
+        return imageUri;
     }
 }

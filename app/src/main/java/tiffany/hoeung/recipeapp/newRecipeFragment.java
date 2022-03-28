@@ -38,7 +38,7 @@ public class NewRecipeFragment extends Fragment {
     private EditText recipeName;
     private EditText recipeIngredients;
     private EditText recipeInstructions;
-    private ImageView image100, image450;
+    private ImageView imageView;
     private Uri imageUri;
     private byte[] imageByte;
 
@@ -80,7 +80,7 @@ public class NewRecipeFragment extends Fragment {
                         Intent data = result.getData();
                         imageUri = Objects.requireNonNull(data).getData();
                         if(imageUri != null)
-                            image100.setImageURI(imageUri);
+                            imageView.setImageURI(imageUri);
                         Bitmap imageBitmap;
                         try {
                             imageBitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
@@ -141,8 +141,7 @@ public class NewRecipeFragment extends Fragment {
         recipeName = view.findViewById(R.id.new_recipe_name);
         recipeIngredients = view.findViewById(R.id.new_recipe_ingredients);
         recipeInstructions =  view.findViewById(R.id.new_recipe_instructions);
-        image100 = view.findViewById(R.id.recipe_image100);
-        image450 = view.findViewById(R.id.recipe_image450);
+        imageView = view.findViewById(R.id.recipe_image100);
     }
 
     private int saveNewRecipe() {
@@ -150,9 +149,9 @@ public class NewRecipeFragment extends Fragment {
         if(recipeName.getText().toString().compareTo("") != 0) {
             SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(this.getActivity());
             String[] ingredients = recipeIngredients.getText().toString().split("\n");
-            String[] instructions = recipeInstructions.getText().toString().split("\n\n");
-            Recipe newRecipe = new Recipe(Recipe.recipeArrayList.size(), recipeName.getText().toString(), R.drawable.spaghetti,
-                    R.drawable.spaghetti_2, ingredients, instructions);
+            String[] instructions = recipeInstructions.getText().toString().split("\n");
+            Recipe newRecipe = new Recipe(Recipe.recipeArrayList.size(), recipeName.getText().toString(),
+                    imageByte, ingredients, instructions);
 
             Recipe.recipeArrayList.add(newRecipe);
             sqLiteManager.addRecipeToDatabase(newRecipe);
