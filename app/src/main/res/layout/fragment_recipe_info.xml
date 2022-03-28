@@ -81,6 +81,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/instructions_relativeLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ingredient_relativeLayout">
@@ -101,6 +102,23 @@
                     android:paddingHorizontal="10dp"
                     android:text="@string/ingredients_testString"
                     android:textSize="15dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@+id/instructions_relativeLayout">
+
+                <Button
+                    android:id="@+id/button_delete"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:text="Remove Recipe"
+                    android:backgroundTint="#EC3C3C"/>
+
             </RelativeLayout>
 
         </RelativeLayout>
