@@ -41,8 +41,10 @@ public class RecipeArchive {
 
         // listRecipeFragment.getContext() allows us to access the assets folder.
         // .getDrawable gets image. The second is for the larger recipe screen
-        recipes.add(new Recipe("Spaghetti and meatballs", R.drawable.spaghetti,
+        recipes.add(new Recipe(recipes.size()+1,"Spaghetti and meatballs", R.drawable.spaghetti,
                 R.drawable.spaghetti_2, ingredients, instructions));
+
+        System.out.println("spaghetti: " + R.drawable.spaghetti);
 
         // Cottage Pie
         ingredients = new String[] {"1 pound lean ground beef",
@@ -66,8 +68,10 @@ public class RecipeArchive {
                 "To Make Potato Topping: Place diced potatoes in a medium saucepan. Cover with water and place over high heat. Allow to come to a boil. Boil for 15 minutes, or until potatoes are tender. Drain.",
                 "Mash potatoes until smooth, then add butter or margarine, followed by milk. Whip until fluffy. Add salt and pepper to taste. Spread potatoes over beef filling. Sprinkle with grated Cheddar cheese.",
                 "Bake in preheated oven for 25 minutes, until top is browned and cheese is bubbly."};
-        recipes.add(new Recipe("Cottage Pie", R.drawable.cottage_pie,
+        recipes.add(new Recipe(recipes.size()+1,"Cottage Pie", R.drawable.cottage_pie,
                 R.drawable.cottage_pie2, ingredients, instructions));
+
+        System.out.println("cottage_pie: " + R.drawable.cottage_pie);
 
         // Crab Rangoon
         ingredients = new String[] {"1 8 oz Kraft Philadelphia Regular Cream Cheese, room temperature",
@@ -78,7 +82,7 @@ public class RecipeArchive {
                 "oil, for deep frying"};
         instructions = new String[] {"Mix all the cream cheese, crab meat, sugar, and salt in a bowl. Stir to blend well. Place about 1 tablespoon of the cream cheese filling in the middle of a wonton wrapper. Dab some water on the outer edges of the wonton wrapper and fold the two ends of the wrapper together. Fold the other two ends to make a tiny parcel pictured below. Pinch to seal tight and make sure that there is no leakage.",
                 "Heat up a pot of oil for deep-frying and fry the crab rangoon until golden brown. Dish out with a strainer or slotted spoon, draining the excess oil by laying the crab rangoon on a dish lined with paper towels. Let the crab rangoon cools down a bit before serving them with sweet and sour sauce."   };
-        recipes.add(new Recipe("Crab Rangoon", R.drawable.crab_rangoon,
+        recipes.add(new Recipe(recipes.size()+1,"Crab Rangoon", R.drawable.crab_rangoon,
                 R.drawable.crab_rangoon2, ingredients, instructions));
 
         // Zaru Soba
@@ -91,7 +95,7 @@ public class RecipeArchive {
                 "Minced scallions or toasted sesame seeds for garnish"};
         instructions = new String[] {"Bring a large pot of water to a boil, and salt it. Cook noodles until tender but not mushy. Drain, and quickly rinse under cold running water until cold. Drain well.",
                 "Combine dashi or stock, soy sauce and mirin. Taste, and add a little more soy if the flavor is not strong enough. Serve noodles with garnishes, with sauce on side for dipping (or spooning over)."};
-        recipes.add(new Recipe("Zaru Soba", R.drawable.zaru_soba,
+        recipes.add(new Recipe(recipes.size()+1,"Zaru Soba", R.drawable.zaru_soba,
                 R.drawable.zaru_soba2, ingredients, instructions));
 
         // Chicken Enchiladas
@@ -108,7 +112,7 @@ public class RecipeArchive {
                 "In a skillet, warm the enchilada sauce. Working with one tortilla at a time, dip it in the enchilada sauce until lightly coated. Scoop ⅓ cup of the enchilada filling into the tortilla and roll tightly. arrange (see side down) in a 9X13 baking dish and repeat with remaining tortillas.",
                 "Pour remaining enchilada sauce over the prepared enchiladas followed by the remaining cheese.",
                 "Bake for 25 minutes, until cheese is bubbling."};
-        recipes.add(new Recipe("Chicken Enchiladas", R.drawable.chicken_enchiladas,
+        recipes.add(new Recipe(recipes.size()+1,"Chicken Enchiladas", R.drawable.chicken_enchiladas,
                 R.drawable.chicken_enchiladas2, ingredients, instructions));
 
         ingredients = new String[] {"1 1/2 pounds skirt steak, cut into 4-inch-long pieces, then cut against the grain into 1/4-inch-thick slices",
@@ -130,7 +134,7 @@ public class RecipeArchive {
                 "Remove the beef from the skillet and set aside. Allow the liquid in the pan to reduce until thickened, about 4 minutes. Add the garlic and scallions and cook 1 minute more. " +
                 "Add the mushrooms and cook for 2 to 3 minutes more. Add the snow peas, baby corn and bell pepper and continue cooking until all the vegetables are crisp-tender, about 2 minutes. Return the beef to the skillet and toss to combine."};
 
-        recipes.add(new Recipe("Beef Stir-Fry", R.drawable.beef_stirfry,
+        recipes.add(new Recipe(recipes.size()+1,"Beef Stir-Fry", R.drawable.beef_stirfry,
                 R.drawable.beef_stirfry2, ingredients, instructions));
 
         return recipes;

@@ -3,15 +3,21 @@ package tiffany.hoeung.recipeapp;
 import android.graphics.drawable.Drawable;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Recipe implements Serializable {
+    public static ArrayList<Recipe> recipeArrayList = new ArrayList<>();
+    public static ArrayList<Recipe> favoritesArrayList = new ArrayList<>();
+
+    public int id;
     public String recipeName;
-    /*public Drawable recipeImageCard;
-    public Drawable recipeImageInfo;*/
     public int recipeImageCard;
     public int recipeImageInfo;
     public String[] ingredients;
     public String[] instructions;
+
+    public int isFavorited = 0;
+    public int isDeleted = 0;
 
     /*public Recipe(String recipeName, Drawable recipeImageCard, Drawable recipeImageInfo,
                   String[] ingredients, String[] instructions) {
@@ -22,14 +28,17 @@ public class Recipe implements Serializable {
         this.instructions = instructions;
     }*/
 
-    public Recipe(String recipeName, int recipeImageCard, int recipeImageInfo,
+    public Recipe(int id, String recipeName, int recipeImageCard, int recipeImageInfo,
                   String[] ingredients, String[] instructions) {
+        this.id = id;
         this.recipeName = recipeName;
         this.recipeImageCard = recipeImageCard;
         this.recipeImageInfo = recipeImageInfo;
         this.ingredients = ingredients;
         this.instructions = instructions;
     }
+
+    public int getId() { return id; }
 
     public String getRecipeName() {
         return recipeName;
@@ -43,13 +52,23 @@ public class Recipe implements Serializable {
         return recipeImageInfo;
     }
 
-    public String[] getIngredients() {
-        return ingredients;
+    public String getIngredientsString() {
+        StringBuilder str = new StringBuilder();
+        for (String ingredient : ingredients)
+            str.append(ingredient + "\n");
+        return str.toString();
     }
 
-    public String[] getInstructions() {
-        return instructions;
+    public String getInstructionsString() {
+        StringBuilder str = new StringBuilder();
+        for (String instruction : instructions)
+            str.append(instruction + "\n\n");
+        return str.toString();
     }
+
+    public int getIsFavorited() { return isFavorited; }
+
+    public int getIsDeleted() { return isDeleted; }
 
 
 }

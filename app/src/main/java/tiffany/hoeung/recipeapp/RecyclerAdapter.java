@@ -1,5 +1,6 @@
 package tiffany.hoeung.recipeapp;
 
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.recipeName.setText(recipes.get(position).getRecipeName());
-        holder.recipeImage.setImageDrawable(frag.getContext().getDrawable(recipes.get(position).getRecipeImageCard()));
+        Drawable image = frag.getContext().getDrawable(recipes.get(position).getRecipeImageCard());
+        holder.recipeImage.setImageDrawable(image);
     }
 
     @Override

@@ -2,6 +2,9 @@ package tiffany.hoeung.recipeapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -23,13 +26,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class NewRecipeFragment extends Fragment {
-    private ArrayList<Recipe> recipeList = new ArrayList<>();
-    private ArrayList<Recipe> favoritesList = new ArrayList<>();
     private NavController navController;
 
     private EditText recipeName;
@@ -37,6 +40,7 @@ public class NewRecipeFragment extends Fragment {
     private EditText recipeInstructions;
     private ImageView image100, image450;
     private Uri imageUri;
+    private byte[] imageByte;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,13 +54,7 @@ public class NewRecipeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_new_recipe, container, false);
 
         // get the components from the xml file
-        recipeName = view.findViewById(R.id.new_recipe_name);
-        recipeIngredients = view.findViewById(R.id.new_recipe_ingredients);
-        recipeInstructions =  view.findViewById(R.id.new_recipe_instructions);
-
-        // saving the arrays to modify if needed
-        recipeList = (ArrayList<Recipe>) getArguments().getSerializable("recipes");
-        favoritesList = (ArrayList<Recipe>) getArguments().getSerializable("favorites");
+        getComponenets(view);
 
         // For navigation
         NavHostFragment navHostFragment =
@@ -66,8 +64,14 @@ public class NewRecipeFragment extends Fragment {
         }
 
         // Make the buttons do stuff
+        setButtons(view);
 
+        return view;
+    }
+
+    private void setButtons(View view) {
         // 100x100 Upload Image Button:
+        // Run second after image is selected:
         ActivityResultLauncher<Intent> galleryResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -75,9 +79,21 @@ public class NewRecipeFragment extends Fragment {
                         System.out.println("Processing data");
                         Intent data = result.getData();
                         imageUri = Objects.requireNonNull(data).getData();
-                        image100.setImageURI(imageUri);
+                        if(imageUri != null)
+                            image100.setImageURI(imageUri);
+                        Bitmap imageBitmap;
+                        try {
+                            imageBitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
+                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                            imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                            imageByte = stream.toByteArray();
+                            imageBitmap.recycle();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
+        // This gets run first:
         view.findViewById(R.id.recipe_imageBtn100).setOnClickListener(view1 -> {
             System.out.println("Opening gallery!");
             Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -87,32 +103,26 @@ public class NewRecipeFragment extends Fragment {
 
         // Cancel Button:
         view.findViewById(R.id.button_cancel).setOnClickListener(view1 -> {
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("recipes", recipeList);
-                bundle.putSerializable("favorites", favoritesList);
-                bundle.putInt("screen", 0);
+            Bundle bundle = new Bundle();
+            bundle.putInt("screen", 0);
 
-                navController.navigate(R.id.new_to_list, bundle);
+            navController.navigate(R.id.new_to_list, bundle);
         });
 
         // Home Button:
         view.findViewById(R.id.button_home).setOnClickListener(view1 -> {
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("recipes", recipeList);
-                bundle.putSerializable("favorites", favoritesList);
-                bundle.putInt("screen", 0);
+            Bundle bundle = new Bundle();
+            bundle.putInt("screen", 0);
 
-                navController.navigate(R.id.new_to_list, bundle);
+            navController.navigate(R.id.new_to_list, bundle);
         });
 
         // Favorites Button:
         view.findViewById(R.id.button_favorites).setOnClickListener(view1 -> {
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("recipes", recipeList);
-                bundle.putSerializable("favorites", favoritesList);
-                bundle.putInt("screen", 1);
+            Bundle bundle = new Bundle();
+            bundle.putInt("screen", 1);
 
-                navController.navigate(R.id.new_to_list, bundle);
+            navController.navigate(R.id.new_to_list, bundle);
         });
 
         // Save Button:
@@ -120,24 +130,32 @@ public class NewRecipeFragment extends Fragment {
             // Save recipe to recipeList
             if(saveNewRecipe() == 0) {
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("recipes", recipeList);
-                bundle.putSerializable("favorites", favoritesList);
                 bundle.putInt("screen", 0);
 
                 navController.navigate(R.id.new_to_list, bundle);
             }
         });
+    }
 
-        return view;
+    private void getComponenets(View view) {
+        recipeName = view.findViewById(R.id.new_recipe_name);
+        recipeIngredients = view.findViewById(R.id.new_recipe_ingredients);
+        recipeInstructions =  view.findViewById(R.id.new_recipe_instructions);
+        image100 = view.findViewById(R.id.recipe_image100);
+        image450 = view.findViewById(R.id.recipe_image450);
     }
 
     private int saveNewRecipe() {
         // check if recipeName has text in it
         if(recipeName.getText().toString().compareTo("") != 0) {
+            SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(this.getActivity());
             String[] ingredients = recipeIngredients.getText().toString().split("\n");
-            String[] instructions = recipeIngredients.getText().toString().split("\n");
-            recipeList.add(new Recipe(recipeName.getText().toString(), R.drawable.spaghetti,
-                    R.drawable.spaghetti_2, ingredients, instructions));
+            String[] instructions = recipeInstructions.getText().toString().split("\n\n");
+            Recipe newRecipe = new Recipe(Recipe.recipeArrayList.size(), recipeName.getText().toString(), R.drawable.spaghetti,
+                    R.drawable.spaghetti_2, ingredients, instructions);
+
+            Recipe.recipeArrayList.add(newRecipe);
+            sqLiteManager.addRecipeToDatabase(newRecipe);
             return 0;
         } else {
             Toast.makeText(this.getActivity(), "Cannot add recipe.\nMissing recipe name.", Toast.LENGTH_SHORT).show();

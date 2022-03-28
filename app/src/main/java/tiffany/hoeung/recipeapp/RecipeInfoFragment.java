@@ -45,18 +45,15 @@ public class RecipeInfoFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_recipe_info, container, false);
-        // get the layouts from the xml file
-        foodImage = view.findViewById(R.id.info_image);
-        titleText = view.findViewById(R.id.info_name);
-        ingredientsText = view.findViewById(R.id.info_ingredients);
-        instructionsText = view.findViewById(R.id.info_instructions);
 
-        // this is the recipe list + recipe we want to display
-        recipeList = (ArrayList<Recipe>) getArguments().getSerializable("recipes");
+        // Get XML Components
+        getComponents(view);
+
+        // Get stuff from bundle
         position = getArguments().getInt("position");
         screen = getArguments().getInt("screen");
-        favoritesList = (ArrayList<Recipe>) getArguments().getSerializable("favorites");
-        // Fills out recipe page with appropriate info
+
+        // Fills out recipe page with appropriate info using position
         updateLayout();
 
         // For navigation
@@ -66,55 +63,95 @@ public class RecipeInfoFragment extends Fragment {
             navController = navHostFragment.getNavController();
         }
 
+        //Set the buttons:
+        setButtons(view);
+
+        return view;
+    }
+
+    private void setButtons(View view) {
+
+        //Home Button:
         view.findViewById(R.id.button_home).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("recipes", recipeList);
-                bundle.putSerializable("favorites", favoritesList);
                 bundle.putInt("screen", 0);
 
                 navController.navigate(R.id.info_to_list, bundle);
             }
         });
 
+        //Favorites home Button:
         view.findViewById(R.id.button_favorites).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("recipes", recipeList);
-                bundle.putSerializable("favorites", favoritesList);
                 bundle.putInt("screen", 1);
 
                 navController.navigate(R.id.info_to_list, bundle);
             }
         });
 
+        // Favorite Button:
         CheckBox favoriteButton = view.findViewById(R.id.button_isFavorited);
         //Check if the current recipe is already faovrited
-        if(favoritesList.contains(recipeList.get(position)))
+        if(Recipe.favoritesArrayList.contains(Recipe.recipeArrayList.get(position)))
             favoriteButton.setChecked(true);
 
         favoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Recipe recipe = Recipe.recipeArrayList.get(position);
+                SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(getActivity());
+
                 if(favoriteButton.isChecked()) {
-                    favoritesList.add(recipeList.get(position));
+                    recipe.isFavorited = 1;
+                    sqLiteManager.updateRecipeInDB(recipe);
+                    Recipe.favoritesArrayList.add(Recipe.recipeArrayList.get(position));
                 } else {
-                    favoritesList.remove(recipeList.get(position));
+                    recipe.isFavorited = 0;
+                    sqLiteManager.updateRecipeInDB(recipe);
+                    Recipe.favoritesArrayList.remove(Recipe.recipeArrayList.get(position));
                 }
             }
         });
 
-        return view;
+        // Delete Button:
+        view.findViewById(R.id.button_delete).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Remove the recipe from the list
+                Recipe recipe = Recipe.recipeArrayList.get(position);
+                // Remove the item from both lists
+                Recipe.recipeArrayList.remove(recipe);
+                Recipe.favoritesArrayList.remove(recipe);
+                // Set the recipe to deleted in the DB
+                SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(getActivity());
+                recipe.isDeleted = 1;
+                sqLiteManager.updateRecipeInDB(recipe);
+
+                Bundle bundle = new Bundle();
+                bundle.putInt("screen", 0);
+                navController.navigate(R.id.info_to_list, bundle);
+            }
+        });
+    }
+
+    private void getComponents(View view) {
+        // get the layouts from the xml file
+        foodImage = view.findViewById(R.id.info_image);
+        titleText = view.findViewById(R.id.info_name);
+        ingredientsText = view.findViewById(R.id.info_ingredients);
+        instructionsText = view.findViewById(R.id.info_instructions);
     }
 
     private void updateLayout() {
         Recipe recipe;
         if(screen == 0)
-            recipe = recipeList.get(position);
+            recipe = Recipe.recipeArrayList.get(position);
         else
-            recipe = favoritesList.get(position);
+            recipe = Recipe.favoritesArrayList.get(position);
         //setting image
         foodImage.setImageDrawable(getContext().getDrawable(recipe.getRecipeImageInfo()));
 
@@ -122,24 +159,11 @@ public class RecipeInfoFragment extends Fragment {
         titleText.setText(recipe.recipeName);
 
         // list the ingredients
-        String[] ingredients = recipe.getIngredients();
-        StringBuilder strBuilder = new StringBuilder();
-        if(ingredients != null) {
-            for(String str : ingredients)
-                strBuilder.append(str + "\n");
-
-
-            ingredientsText.setText(strBuilder.toString());
-        }
+        ingredientsText.setText(recipe.getIngredientsString());
 
         // list the instructions
-        String[] instructions = recipe.getInstructions();
-        strBuilder = new StringBuilder();
-        if(instructions != null) {
-            for(String str : instructions)
-                strBuilder.append(str + "\n\n");
-
-            instructionsText.setText(strBuilder.toString());
-        }
+        instructionsText.setText(recipe.getInstructionsString());
     }
+
+
 }

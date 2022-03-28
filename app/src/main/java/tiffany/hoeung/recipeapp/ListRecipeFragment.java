@@ -32,35 +32,24 @@ public class ListRecipeFragment extends Fragment implements RecyclerAdapter.OnNo
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //get layout manager (aka, what format RV should take)
-        layoutManager = new GridLayoutManager(this.getActivity(), 2);
-        recipeRV.setLayoutManager(layoutManager);
         // adds recipes to recipeList arraylist
         if (getArguments() == null) {
             createInitialRecipeList();
         } else {
-            recipeList = (ArrayList<Recipe>) getArguments().getSerializable("recipes");
-            favoritesList = (ArrayList<Recipe>) getArguments().getSerializable("favorites");
-            sortLists();
+            recipeList = Recipe.recipeArrayList;
+            favoritesList = Recipe.favoritesArrayList;
             screen = getArguments().getInt("screen");
         }
-        //create a new recycler view adapter
-        adapterRV = new RecyclerAdapter(recipeList, this, this);
-        favoritesAdapterRV = new RecyclerAdapter(favoritesList, this, this);
-        // set the recycler view's adapter
-        if(screen == 0)
-            recipeRV.setAdapter(adapterRV);
-        else
-            recipeRV.setAdapter(favoritesAdapterRV);
+        sortLists();
+        System.out.println("Array Size: " + Recipe.recipeArrayList.size());
+        setRecipeAdapter(screen);
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Get favorites button
-        // Button favButton =
-
+        //setRecipeAdapter(screen);
+        //loadFromDBToMemory();
     }
 
     @Override
@@ -77,7 +66,6 @@ public class ListRecipeFragment extends Fragment implements RecyclerAdapter.OnNo
             navController = navHostFragment.getNavController();
         // Favorites button will only display entries in the favoritesList
         view.findViewById(R.id.button_favorites).setOnClickListener(view1 -> {
-            System.out.println("Favorites has " + favoritesList.size() + " recipes in it");
             recipeRV.setAdapter(favoritesAdapterRV);
             screen = 1;
         });
@@ -98,6 +86,25 @@ public class ListRecipeFragment extends Fragment implements RecyclerAdapter.OnNo
         return view;
     }
 
+    public void setRecipeAdapter(int screen) {
+        //get layout manager (aka, what format RV should take)
+        layoutManager = new GridLayoutManager(this.getActivity(), 2);
+        recipeRV.setLayoutManager(layoutManager);
+        //create a new recycler view adapter
+        adapterRV = new RecyclerAdapter(Recipe.recipeArrayList, this, this);
+        favoritesAdapterRV = new RecyclerAdapter(Recipe.favoritesArrayList, this, this);
+        // set the recycler view's adapter
+        if(screen == 0)
+            recipeRV.setAdapter(adapterRV);
+        else
+            recipeRV.setAdapter(favoritesAdapterRV);
+    }
+
+    private void loadFromDBToMemory() {
+        SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(this.getActivity());
+        sqLiteManager.populateRecipeListArray();
+    }
+
     @Override
     public void onNoteClick(int position) {
         //Toast.makeText(this.getActivity(), "Position " + position + " pressed\n" + recipeList.get(position).recipeName, Toast.LENGTH_SHORT).show();
@@ -110,16 +117,27 @@ public class ListRecipeFragment extends Fragment implements RecyclerAdapter.OnNo
 
         navController.navigate(R.id.list_to_info, bundle);
     }
+
     public void createInitialRecipeList() {
         System.out.println("Creating initial recipes!");
-
-        RecipeArchive recipeArchive = new RecipeArchive(this);
-        recipeList = recipeArchive.createInitialRecipes();
+        SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(this.getActivity());
+        // Before we start populating the array list, get from the database
+        loadFromDBToMemory();
+        // Check if recipe array is empty; if so, initialize default values
+        if(Recipe.recipeArrayList.size() == 0)
+            Recipe.recipeArrayList.addAll(new RecipeArchive(this).createInitialRecipes());
+        // Check to see if the values exist in the database
+        for(Recipe recipe : Recipe.recipeArrayList)
+            if(!sqLiteManager.doesRecipeExistInDB(recipe)) {
+                System.out.println("Adding " + recipe.getRecipeName());
+                sqLiteManager.addRecipeToDatabase(recipe);
+            }
         sortLists();
+        System.out.println("Array Size: " + Recipe.recipeArrayList.size());
     }
 
     public void sortLists() {
-        Collections.sort(recipeList, new Comparator<Recipe>() {
+        Collections.sort(Recipe.recipeArrayList, new Comparator<Recipe>() {
             @Override
             public int compare(Recipe r1, Recipe r2) {
                 String r1Name = r1.recipeName;
@@ -128,8 +146,7 @@ public class ListRecipeFragment extends Fragment implements RecyclerAdapter.OnNo
                 return r1Name.compareTo(r2Name);
             }
         });
-
-        Collections.sort(favoritesList, new Comparator<Recipe>() {
+        Collections.sort(Recipe.favoritesArrayList, new Comparator<Recipe>() {
             @Override
             public int compare(Recipe r1, Recipe r2) {
                 String r1Name = r1.recipeName;

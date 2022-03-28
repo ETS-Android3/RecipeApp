@@ -15,4 +15,5 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/fragment_navigation"
         android:background="@color/menu_background"/>
+
 </RelativeLayout>
