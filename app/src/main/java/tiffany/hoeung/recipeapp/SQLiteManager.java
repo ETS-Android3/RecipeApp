@@ -90,8 +90,8 @@ public class SQLiteManager extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
 
         try (Cursor result = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME, null)) {
-            if(result.getCount() != 0) {
-                while(result.moveToNext() && result.getInt(7) != 1) {
+            if (result.getCount() != 0) {
+                while (result.moveToNext() && result.getInt(7) != 1) {
                     int id = result.getInt(1);
                     String title = result.getString(2);
                     byte[] imageByte = result.getBlob(3);
@@ -104,7 +104,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
                     //Add the recipe
                     Recipe.recipeArrayList.add(recipe);
                     // Check if it is favorited
-                    if(favorited == 1)
+                    if (favorited == 1)
                         Recipe.favoritesArrayList.add(recipe);
                 }
             }
@@ -129,7 +129,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String query = "Select * from " + TABLE_NAME + " where " + ID_FIELD + " = " + recipe.getId();
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
-        if(cursor.getCount() <= 0){
+        if (cursor.getCount() <= 0) {
             cursor.close();
             return false;
         }
@@ -140,4 +140,5 @@ public class SQLiteManager extends SQLiteOpenHelper {
     public String[] stringToArray(String toParse, String separator) {
         return toParse.split(separator);
     }
+
 }
