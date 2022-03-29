@@ -158,6 +158,49 @@ public class RecipeArchive {
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
                 ingredients, instructions));
 
+        ingredients = new String[] {"1 cup Butter or margarine, softened",
+                "3/4 cup Sugar",
+                "3/4 cup Brown Sugar",
+                "2 Eggs",
+                "2 teaspoons Vanilla",
+                "2 1/4 cups Flour",
+                "1 teaspoon Baking Soda",
+                "1/2 teaspoon Salt",
+                "1 cup Walnuts or Pecans (optional)",
+                "2 cups Chocolate chips"};
+
+        instructions = new String[] {"Heat oven to 375ºF.",
+                "Stir flour with baking soda and salt; set aside.",
+                "In large mixing bowl, beat butter with sugar, and brown sugar at medium speed until creamy and lightened in color.",
+                "Add eggs and vanilla, one at a time. Mix on low speed until incorporated.",
+                "Gradually blend dry mixture into creamed mixture. Stir in nuts and chocolate chips.",
+                "Drop by tablespoon onto ungreased cookie sheets.",
+                "Bake for 9 to 11 minutes or until chocolate chip cookies are golden brown."};
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.chocchipcookie);
+        recipes.add(new Recipe(recipes.size()+1,"Chocolate Chip Cookies",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
+
+        ingredients = new String[] {"1/2 cup Butter",
+                "1 1/4 cup Sugar",
+                "2 Eggs",
+                "2 cups Flour",
+                "2 teaspoons Baking Powder",
+                "1/2 teaspoon Salt",
+                "1/4 cup Milk",
+                "2 1/2 cups Blueberries",
+                "1 cup Walnuts or Pecans (optional)",
+                "2 cups Chocolate chips"};
+
+        instructions = new String[] {"Preheat oven to 375 degrees F (190 degrees C). Grease and flour muffin pans or use paper liners.",
+                "In a large bowl, cream butter and 1 1/4 cup sugar until light and fluffy. Add eggs one at a time and mix in.",
+                "Mix flour, baking powder and salt. Add flour mixture, alternating with milk. Mash 1/2 cup berries and stir into batter. Fold in remaining berries.",
+                "Fill muffin cups. Bake at 375 degrees F (190 degrees C) for 30 minutes. Remove from oven and wait 20 minutes to remove from pans."};
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.bluemuffin);
+        recipes.add(new Recipe(recipes.size()+1,"Blueberry Muffins",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
+
         return recipes;
     }
 

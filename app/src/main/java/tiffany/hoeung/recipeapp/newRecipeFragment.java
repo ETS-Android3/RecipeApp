@@ -32,7 +32,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class NewRecipeFragment extends Fragment {
+public class newRecipeFragment extends Fragment {
     private NavController navController;
 
     private EditText recipeName;
