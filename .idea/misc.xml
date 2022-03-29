@@ -7,10 +7,17 @@
         <entry key="..\:/425/RecipeApp/app/src/main/res/layout/activity_recipe_list.xml" value="0.3109375" />
         <entry key="..\:/425/RecipeApp/app/src/main/res/layout/content_main.xml" value="0.31354166666666666" />
         <entry key="..\:/425/RecipeApp/app/src/main/res/layout/fragment_list_recipe.xml" value="0.3109375" />
-        <entry key="..\:/425/RecipeApp/app/src/main/res/layout/fragment_new_recipe.xml" value="0.31354166666666666" />
-        <entry key="..\:/425/RecipeApp/app/src/main/res/layout/fragment_recipe_info.xml" value="0.33" />
         <entry key="..\:/425/RecipeApp/app/src/main/res/layout/recipe_card_layout.xml" value="0.33" />
         <entry key="..\:/425/RecipeApp/app/src/main/res/menu/menu_main.xml" value="0.31354166666666666" />
+        <entry key="..\:/Users/12072/StudioProjects/RecipeApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1595" />
+        <entry key="..\:/Users/12072/StudioProjects/RecipeApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1595" />
+        <entry key="..\:/Users/12072/StudioProjects/RecipeApp/app/src/main/res/layout/activity_recipe_list.xml" value="0.2128623188405797" />
+        <entry key="..\:/Users/12072/StudioProjects/RecipeApp/app/src/main/res/layout/fragment_list_recipe.xml" value="0.2128623188405797" />
+        <entry key="..\:/Users/12072/StudioProjects/RecipeApp/app/src/main/res/layout/fragment_new_recipe.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/12072/StudioProjects/RecipeApp/app/src/main/res/layout/fragment_recipe_info.xml" value="0.2128623188405797" />
+        <entry key="..\:/Users/12072/StudioProjects/RecipeApp/app/src/main/res/layout/recipe_card_layout.xml" value="0.2128623188405797" />
+        <entry key="..\:/Users/12072/StudioProjects/RecipeApp/app/src/main/res/menu/menu_main.xml" value="0.2712962962962963" />
+        <entry key="..\:/Users/12072/StudioProjects/RecipeApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1595" />
       </map>
     </option>
   </component>
