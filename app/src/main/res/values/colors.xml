@@ -8,6 +8,6 @@
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
     <color name="menu_background">#F7F7F7</color>
-    <color name="theme_color">#EBFF364E</color>
-    <color name="options_bar">#FCE1E1E1</color>
+    <color name="theme_color">#EDFF364E</color>
+    <color name="options_bar">#FAE1E1E1</color>
 </resources>
