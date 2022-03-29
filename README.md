@@ -4,7 +4,7 @@
   <br> <strong>Group ID:</strong> G 01</br>
   <br> <strong>Group Members:</strong> Tiffany, Paul, Billy</br>
   <br> <strong>Project Title:</strong> Lightweight recipe suggesting & shopping app.</br>
-  <br> <strong>Project Description:</strong> ?</br>
+  <br> <strong>Project Description:</strong> Creating a mobile app of recipes.</br>
  </p>
 
 ## Executive Summary
