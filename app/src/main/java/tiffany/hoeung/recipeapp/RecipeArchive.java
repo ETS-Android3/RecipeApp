@@ -226,24 +226,20 @@ public class RecipeArchive {
                 "2 Eggs",
                 "1 teaspoon Vanilla"};
 
-        instructions = new String[] {"Put the milk and butter in a small saucepan " +
-                "set over medium-low heat.\nOnce butter has " +
-                "melted remove and cool until just warm.\n" +
-                "While the milk and butter are heating, whisk " +
-                "the dry ingredients together in a large mix" +
-                "ing bowl.\nGradually add the warm milk/but" +
-                "ter mixture and whisk until smooth.\nAdd the eggs and vanilla and whisk until combined.\n" +
+        instructions = new String[] {"Put the milk and butter in a small saucepan set over medium-low heat.",
+                "Once butter has melted remove and cool until just warm.",
+                "While the milk and butter are heating, whisk the dry ingredients together in a large mixing bowl.",
+                "Gradually add the warm milk/butter mixture and whisk until smooth.",
+                "Add the eggs and vanilla and whisk until combined.",
                 "Cover with plastic and refrigerate at least 12 hours and up to 24 hours.",
                 "Preheat waffle iron to desired temp.",
-                "Whisk batter to combine again (batter " +
-                "will deflate).\nPour 1 cup (depending on waffle iron) of batter onto the " +
-                "center of the lower grid of the preheated " +
-                "waffle maker; spread batter evenly using a " +
-                "heatproof spatula.\nClose lid of waffle maker.\n" +
-                "When tone sounds (depending on waffle iron), waffle is ready.\nOpen lid " +
-                "and carefully remove baked waffle.\nRepeat " +
-                "with remaining batter.\nFor best results, serve " +
-                "immediately."};
+                "Whisk batter to combine again (batter will deflate).",
+                "Pour 1 cup (depending on waffle iron) of batter onto the center of the lower grid of the preheated waffle maker; spread batter evenly using a heatproof spatula.",
+                "Close lid of waffle maker.",
+                "When tone sounds (depending on waffle iron), waffle is ready.",
+                "Open lid and carefully remove baked waffle.",
+                "Repeat with remaining batter.",
+                "For best results, serve immediately."};
         imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.waffles);
         recipes.add(new Recipe(recipes.size()+1,"Yeasted Waffles",
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
