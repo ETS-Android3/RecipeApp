@@ -201,6 +201,219 @@ public class RecipeArchive {
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
                 ingredients, instructions));
 
+        ingredients = new String[] {
+                "3 Eggs",
+                "1 1/2 cups Flour",
+                "3/4 teaspoon Salt",
+                "1 1/2 cups Milk"};
+
+        instructions = new String[] {"Preheat oven to 450°F, and prepare popover pan with butter or cooking spray.",
+                "In a large bowl, mix together all ingredients",
+                "Pour batter into pan.",
+                "Bake at 450°F for 20 mins, and then at 350°F for 20 mins, then done."};
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.popover);
+        recipes.add(new Recipe(recipes.size()+1,"Popovers",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
+
+        ingredients = new String[] {
+                "2 cups Milk",
+                "1 stick Unsalted Butter",
+                "2 1/2 cups Flour",
+                "1 1/2 teaspoons Yeast",
+                "2 tablespoons Sugar",
+                "1 teaspoon Salt",
+                "2 Eggs",
+                "1 teaspoon Vanilla"};
+
+        instructions = new String[] {"Put the milk and butter in a small saucepan " +
+                "set over medium-low heat.\nOnce butter has " +
+                "melted remove and cool until just warm.\n" +
+                "While the milk and butter are heating, whisk " +
+                "the dry ingredients together in a large mix" +
+                "ing bowl.\nGradually add the warm milk/but" +
+                "ter mixture and whisk until smooth.\nAdd the eggs and vanilla and whisk until combined.\n" +
+                "Cover with plastic and refrigerate at least 12 hours and up to 24 hours.",
+                "Preheat waffle iron to desired temp.",
+                "Whisk batter to combine again (batter " +
+                "will deflate).\nPour 1 cup (depending on waffle iron) of batter onto the " +
+                "center of the lower grid of the preheated " +
+                "waffle maker; spread batter evenly using a " +
+                "heatproof spatula.\nClose lid of waffle maker.\n" +
+                "When tone sounds (depending on waffle iron), waffle is ready.\nOpen lid " +
+                "and carefully remove baked waffle.\nRepeat " +
+                "with remaining batter.\nFor best results, serve " +
+                "immediately."};
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.waffles);
+        recipes.add(new Recipe(recipes.size()+1,"Yeasted Waffles",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
+
+        ingredients = new String[] {"3 tablespoons Butter",
+                "1 tablespoon Sugar",
+                "1 Egg",
+                "1 1/2 cups Flour",
+                "3 1/2 teaspoons Baking Powder",
+                "1/4 teaspoon Salt",
+                "1 1/4 cup Milk"};
+
+        instructions = new String[] {"In a large bowl, sift together the flour, baking powder, salt and sugar. Make a well in the center and pour in the milk, egg and melted butter; mix until smooth.",
+                "Heat a lightly oiled griddle or frying pan over medium-high heat. Pour or scoop the batter onto the griddle, using approximately 1/4 cup for each pancake. Brown on both sides and serve hot."};
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.pancakes);
+        recipes.add(new Recipe(recipes.size()+1,"Pancakes",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
+
+        ingredients = new String[] {"1 teaspoon Ground Cinnamon",
+                "1/4 teaspoon Ground Nutmeg",
+                "4 Eggs",
+                "2 tablespoons Sugar",
+                "4 tablespoons Butter",
+                "1/4 cup Milk",
+                "1 1/2 teaspoons Vanilla",
+                "8 slices Bread",
+                "1/2 cup Maple Syrup"};
+
+        instructions = new String[] {"In a small bowl, combine cinnamon, nutmeg, and sugar and set aside briefly.",
+                "In a 10-inch or 12-inch skillet, melt butter over medium heat. Whisk together cinnamon mixture, eggs, milk, and vanilla and pour into a shallow container such as a pie plate. Dip bread in egg mixture. Fry slices until golden brown, then flip to cook the other side. Serve with syrup."};
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.frenchtoast);
+        recipes.add(new Recipe(recipes.size()+1,"French Toast",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
+
+        ingredients = new String[] {"1/2 cup Butter",
+                "1 cup Sugar",
+                "2 Eggs",
+                "1 teaspoon Vanilla",
+                "1/3 cup Cocoa Powder",
+                "1/2 cup Flour",
+                "1/4 teaspoon Salt",
+                "1/4 teaspoon Baking Powder"};
+
+        instructions = new String[] {"Preheat oven to 350 degrees F (175 degrees C). Grease and flour an 8-inch square pan.",
+                "In a large saucepan, melt 1/2 cup butter. Remove from heat, and stir in sugar, eggs, and 1 teaspoon vanilla. Beat in 1/3 cup cocoa, 1/2 cup flour, salt, and baking powder. Spread batter into prepared pan.",
+                "Bake in preheated oven for 25 to 30 minutes. Do not overcook."};
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.brownies);
+        recipes.add(new Recipe(recipes.size()+1,"Chocolate Brownies",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
+
+        ingredients = new String[] {"1 pound Ground Beef",
+                "1 Onion, Diced",
+                "Salt and Pepper",
+                "2 cups Shredded Cheddar",
+                "1 16 oz can refried beans",
+                "1 14.5 oz bag Chips",
+                "1 Sliced Jalapeno Pepper"};
+
+        instructions = new String[] {"In a large frying pan, brown ground beef with onion, salt and pepper over medium heat. Break the meat into very small pieces while it is cooking. After the meat is thoroughly cooked, drain off the grease.",
+                "Arrange chips on a microwavable platter. Spread beans over the chips. Layer with 1/2 of the cheese, the ground beef mixture, and remaining cheese. Arrange jalapeno peppers on top.",
+                "Microwave on medium-high until cheese has melted. Serve immediately."};
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.nachos);
+        recipes.add(new Recipe(recipes.size()+1,"Nachos",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
+
+        ingredients = new String[] {"1 tablespoon Butter",
+                "3/4 cup Almonds",
+                "1 pound Spinach",
+                "1 cup Dried Cranberries",
+                "2 tablespoons Toasted Sesame Seeds",
+                "1 tablespoon Poppy Seeds",
+                "1/2 cup Sugar",
+                "2 teaspoons Minced Onion",
+                "1/4 teaspoon Paprika",
+                "1/4 cup White Wine Vinegar",
+                "1/4 cup Cider Vinegar",
+                "1/2 cup Vegetable Oil"};
+
+        instructions = new String[] {"In a medium saucepan, melt butter over medium heat. Cook and stir almonds in butter until lightly toasted. Remove from heat, and let cool.",
+                "In a medium bowl, whisk together the sesame seeds, poppy seeds, sugar, onion, paprika, white wine vinegar, cider vinegar, and vegetable oil. Toss with spinach just before serving.",
+                "In a large bowl, combine the spinach with the toasted almonds and cranberries."};
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.salad);
+        recipes.add(new Recipe(recipes.size()+1,"Spinach Salad",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
+
+        ingredients = new String[] {"1/2 cup Sugar",
+                "2 cups Warm Water",
+                "2 Large Russet Potatoes, peeled, and sliced into 1/4 inch strips ",
+                "6 cups Vegetable Oil",
+                "Salt"};
+
+        instructions = new String[] {"In a medium bowl, dissolve the sugar in warm water. Soak potatoes in water mixture for 15 minutes. Remove from water, and dry thoroughly on paper towels.",
+                "Heat oil in deep-fryer to 375 degrees F (190 degrees C). Add potatoes, and cook until golden, 5 to 6 minutes. drain on paper towels. Season with salt to taste."};
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.fries);
+        recipes.add(new Recipe(recipes.size()+1,"French Fries",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
+
+        ingredients = new String[] {"1 8 oz package Lobster Meat",
+                "1/4 cup Mayonnaise",
+                "1 tablespoon Finely Chopped Red Onion",
+                "1 teaspoon Lemon Juice",
+                "1/4 teaspoon OLD BAY Seasoning",
+                "1 tablespoon Butter",
+                "2 Hot Dog Buns"};
+
+        instructions = new String[] {"In a medium bowl, flake the crabmeat, and mix in mayonnaise, onion, lemon juice and Old Bay seasoning. Cover and refrigerate for 30 minutes to allow the flavors to mingle.",
+                "Spread butter on the inside of the hot dog buns, and toast under the broiler. Fill buns with the lobster salad, and serve."};
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.lobsterroll);
+        recipes.add(new Recipe(recipes.size()+1,"Lobster Rolls",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
+
+        ingredients = new String[] {"2 slices Bread",
+                "2 sloces American Cheese",
+                "2 teaspoons Brown Sugar",
+                "2 teaspoons Butter"};
+
+        instructions = new String[] {"Heat a skillet over medium heat. Spread butter onto one side of a piece of bread and place butter side down in the skillet. Place one piece of cheese on top of the bread, then sprinkle with brown sugar. Top with the other slice of cheese. Butter the other slice of bread and place on top with the butter side up. Fry on each side until golden brown, 3 to 5 minutes per side."};
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.grilledcheese);
+        recipes.add(new Recipe(recipes.size()+1,"Grilled Cheese Sandwich",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
+
+        ingredients = new String[] {"1 tablespoon Butter",
+                "3/4 cup Sugar",
+                "2 tablespoons Flour",
+                "1/2 teaspoon Ground Cinnamon",
+                "1/4 teaspoon Ground Nutmeg",
+                "1/2 teaspoon Lemon Zest",
+                "7 cups Thinly Sliced Apples",
+                "2 teaspoons Lemon Juice",
+                "1 Pie Crust",
+                "4 tablespoons Milk (optional)"};
+
+        instructions = new String[] {"Preheat oven to 425 degrees F (220 degrees C).",
+                "Mix together the sugar, flour, cinnamon, nutmeg and lemon peel.",
+                "Line one crust in a 9-inch deep-dish pie pan. Layer 1/3 of apples into pie crust. Sprinkle with sugar mixture and repeat until done. Sprinkle with lemon juice and dot with butter.",
+                "Place second pie crust on top of filling and flute the edges. Cut vents in top crust and brush with milk for a glazed appearance if desired.",
+                "Bake at 425 degrees F (220 degrees C) for 40 to 50 minutes."};
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.applepie);
+        recipes.add(new Recipe(recipes.size()+1,"Apple Pie",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
+
+        ingredients = new String[] {"2 sticks Butter",
+                "3 cups Sugar",
+                "4 Eggs",
+                "3 1/2 cups Flour",
+                "2 teaspoons Baking Soda",
+                "1/4 teaspoon Salt",
+                "1 teaspoon Vanilla",
+                "1 cup Buttermilk",
+                "6 Bananas, Mashed"};
+
+        instructions = new String[] {"Preheat oven to 325 degrees F (165 degrees C). Lightly grease a 9x13 inch baking pan.",
+                "In a large bowl, cream together the sugar and margarine until light and fluffy. Stir in the eggs one at a time, beating well with each addition, then stir in the vanilla.",
+                "In a large bowl, sift together flour, baking soda and salt. Blend this mixture into the egg mixture, alternately with the buttermilk; stir just to combine. Fold in the mashed bananas; mixing just enough to evenly combine. Pour batter into prepared pan.",
+                "Bake in preheated oven until a toothpick inserted into center of the loaf comes our clean, about 60 minutes."};
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.bananabread);
+        recipes.add(new Recipe(recipes.size()+1,"Banana Bread",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
+
         return recipes;
     }
 
