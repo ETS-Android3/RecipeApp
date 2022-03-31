@@ -30,8 +30,8 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="110dp"
-            android:textAlignment="center"
             android:text="Spaghetti and Meatballs"
+            android:textAlignment="center"
             android:textSize="20sp" />
     </RelativeLayout>
 

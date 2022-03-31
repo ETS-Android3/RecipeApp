@@ -386,7 +386,9 @@ public class RecipeArchive {
                 "Line one crust in a 9-inch deep-dish pie pan. Layer 1/3 of apples into pie crust. Sprinkle with sugar mixture and repeat until done. Sprinkle with lemon juice and dot with butter.",
                 "Place second pie crust on top of filling and flute the edges. Cut vents in top crust and brush with milk for a glazed appearance if desired.",
                 "Bake at 425 degrees F (220 degrees C) for 40 to 50 minutes."};
+
         imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.applepie);
+
         recipes.add(new Recipe(recipes.size()+1,"Apple Pie",
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
                 ingredients, instructions));
@@ -405,8 +407,39 @@ public class RecipeArchive {
                 "In a large bowl, cream together the sugar and margarine until light and fluffy. Stir in the eggs one at a time, beating well with each addition, then stir in the vanilla.",
                 "In a large bowl, sift together flour, baking soda and salt. Blend this mixture into the egg mixture, alternately with the buttermilk; stir just to combine. Fold in the mashed bananas; mixing just enough to evenly combine. Pour batter into prepared pan.",
                 "Bake in preheated oven until a toothpick inserted into center of the loaf comes our clean, about 60 minutes."};
+
         imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.bananabread);
+
         recipes.add(new Recipe(recipes.size()+1,"Banana Bread",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
+
+        ingredients = new String[] {"Jjajangmyeon noodles",
+                "½ pound pork belly, cut into ½ inch cubes (about 1½ cups’ worth)",
+                "1 cup of Korean radish (or daikon), cut into ½ inch cubes (about 1 cup’s worth)",
+                "1 cup of zucchini, cut into ½ inch cubes",
+                "1 cup of potato, peeled and cut into ½ inch cubes",
+                "1½ cups of onion chunks",
+                "3 tablespoons of vegetable oil",
+                "¼ cup and 1 tablespoon of black bean paste",
+                "2 tablespoons of potato starch powder, combined with ¼ cup water and 1 teaspoon of sugar in a small bowl, set aside",
+                "1 teaspoon of toasted sesame oil",
+                "½ cup cucumber, cut into thin matchsticks for garnish",
+                "water"};
+        instructions = new String[] {"Stir-fry the pork belly in a large, deep wok with 1 Tablespoon of vegetable oil for about 4-5 minutes, until golden brown and crispy.",
+                "Pour out the excess pork fat.",
+                "Add radish and stir fry for 1 minute.",
+                "Add potato, onion, and zucchini and keep stirring for about 3 minutes until the potato looks a little translucent.",
+                "Clear a space in the center of the wok by pushing the ingredients to the edges.",
+                "Add 2 Tablespoons of vegetable oil to the center of the wok, then add ¼ cup of black bean paste and stir it with a wooden spoon for 1 minute to fry it. Then mix everything in the wok and keep stirring.",
+                "Add  2 cups of water to the wok and let it cook with the lid closed for about 10 minutes.",
+                "Open the lid and taste a sample of the radish and potato. If they’re fully cooked, stir in the starch water little by little. Keep stirring until it’s well mixed and thick.",
+                "Add the sesame oil and remove from the heat.",
+                "Serve with noodles (jjajangmyeon) or steamed rice (jjajangbap)."};
+
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.jjajangmyeon);
+
+        recipes.add(new Recipe(recipes.size()+1,"Jjajangmyeon",
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
                 ingredients, instructions));
 
