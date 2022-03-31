@@ -76,7 +76,7 @@
                     android:layout_below="@+id/ingredients_label"
                     android:paddingHorizontal="10dp"
                     android:text="@string/ingredients_testString"
-                    android:textSize="15dp" />
+                    android:textSize="16sp" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -99,7 +99,7 @@
                     android:layout_below="@+id/instructions_label"
                     android:paddingHorizontal="10dp"
                     android:text="@string/ingredients_testString"
-                    android:textSize="15dp" />
+                    android:textSize="16sp" />
             </RelativeLayout>
 
             <RelativeLayout
