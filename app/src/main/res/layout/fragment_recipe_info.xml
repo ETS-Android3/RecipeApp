@@ -66,14 +66,18 @@
                     android:id="@+id/ingredients_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:padding="20dp"
                     android:text="INGREDIENTS"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textStyle="italic" />
 
                 <TextView
                     android:id="@+id/info_ingredients"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/ingredients_label"
+                    android:lineSpacingExtra="10sp"
+                    android:padding="5sp"
                     android:paddingHorizontal="10dp"
                     android:text="@string/ingredients_testString"
                     android:textSize="16sp" />
@@ -89,14 +93,19 @@
                     android:id="@+id/instructions_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:padding="20dp"
                     android:text="INSTRUCTIONS"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/info_instructions"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/instructions_label"
+                    android:layout_marginTop="0dp"
+                    android:lineSpacingExtra="10sp"
+                    android:padding="5sp"
                     android:paddingHorizontal="10dp"
                     android:text="@string/ingredients_testString"
                     android:textSize="16sp" />
