@@ -33,7 +33,7 @@ public class ListRecipeFragment extends Fragment implements RecyclerAdapter.OnNo
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         // adds recipes to recipeList arraylist
-        if (getArguments() == null) {
+        if (getArguments() == null && Recipe.recipeArrayList.size() == 0) {
             createInitialRecipeList();
         } else {
             recipeList = Recipe.recipeArrayList;

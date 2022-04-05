@@ -20,23 +20,13 @@ public class Recipe implements Serializable {
     public int id;
     public String recipeName;
     public byte[] imageByte;
-    /*public int recipeImageCard;
-    public int recipeImageInfo;*/
     public String[] ingredients;
     public String[] instructions;
 
+    /*********** FOR SQLITE DATABASE **************/
     public int isFavorited = 0;
     public int isDeleted = 0;
 
-    /*public Recipe(int id, String recipeName, int recipeImageCard, int recipeImageInfo,
-                  String[] ingredients, String[] instructions) {
-        this.id = id;
-        this.recipeName = recipeName;
-        this.recipeImageCard = recipeImageCard;
-        this.recipeImageInfo = recipeImageInfo;
-        this.ingredients = ingredients;
-        this.instructions = instructions;
-    }*/
     public Recipe(int id, String recipeName, byte[] imageByte, String[] ingredients,
                   String[] instructions) {
         this.id = id;
