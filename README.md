@@ -71,7 +71,7 @@ Upon completion of the three iterations we will then as a group present the fina
 ![alt text](https://i.imgur.com/zoSHOyn.png)
 
 #### [3] Sequence Diagrams 
-![alt text](https://i.imgur.com/vCprGiS.png)
+![alt text](https://i.imgur.com/nfCirS0.png)
 
 #### [4] Deployment Diagrams 
 
