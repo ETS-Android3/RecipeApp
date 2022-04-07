@@ -38,6 +38,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.recipeImage.setImageBitmap(imageBitmap);
     }
 
+    public void updateList(ArrayList<Recipe> recipes){
+        this.recipes = recipes;
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         return recipes.size();
