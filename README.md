@@ -51,12 +51,11 @@ To be completed by the team members
 
 | Items        | Description              | Action Items and Deliverables                                                             |
 |--------------|--------------------------|-------------------------------------------------------------------------------------------|
-|  User Story  | To be completed by the group members...                                                                              |
-|    AAA       | To be completed by the group members...                                                                              |
-|    BBB       | To be completed by the group members...                                                                              |
-|    CCC       | To be completed by the group members...                                                                              |
-|    DDD       | To be completed by the group members...                                                                              |
-|    EEE       | To be completed by the group members...                                                                              |
+|  User Story  | As a user, I want to be able to find specific recipes within the application.                              | Search bar
+|  User Story  | As a user, I want to be able to get a random recipe from the application when I’m feeling indecisive.      | Random button
+|   UI Design  | Work on the design of the application and make it nice to look at.                                         | UI Rework
+|    Diagram   | Create a deployment diagram for iteration #3                                                               | Deployment Diagram
+|  Slideshow   | Create a slideshow for the presentation for iteration #3                                                   |
 
 
 **Final Team Presentation:**
