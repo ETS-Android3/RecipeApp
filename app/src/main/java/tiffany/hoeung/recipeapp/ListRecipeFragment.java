@@ -1,23 +1,23 @@
 package tiffany.hoeung.recipeapp;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Random;
 
 public class ListRecipeFragment extends Fragment implements RecyclerAdapter.OnNoteListener {
     private NavController navController;
@@ -28,12 +28,13 @@ public class ListRecipeFragment extends Fragment implements RecyclerAdapter.OnNo
     private RecyclerAdapter favoritesAdapterRV;
     private RecyclerView recipeRV;
     private int screen = 0;
+    private EditText textFilter;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         // adds recipes to recipeList arraylist
-        if (getArguments() == null) {
+        if (getArguments() == null && Recipe.recipeArrayList.size() == 0) {
             createInitialRecipeList();
         } else {
             recipeList = Recipe.recipeArrayList;
@@ -48,8 +49,7 @@ public class ListRecipeFragment extends Fragment implements RecyclerAdapter.OnNo
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setRecipeAdapter(screen);
-        //loadFromDBToMemory();
+
     }
 
     @Override
@@ -76,11 +76,33 @@ public class ListRecipeFragment extends Fragment implements RecyclerAdapter.OnNo
         });
 
         view.findViewById(R.id.button_new_recipe).setOnClickListener(view1 -> {
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("recipes", recipeList);
-            bundle.putSerializable("favorites", favoritesList);
+            navController.navigate(R.id.list_to_new);
+        });
 
-            navController.navigate(R.id.list_to_new, bundle);
+        view.findViewById(R.id.button_random).setOnClickListener(view1 -> {
+            Bundle bundle = new Bundle();
+            int position = new Random().nextInt(Recipe.recipeArrayList.size());
+            bundle.putInt("position", position);
+            bundle.putInt("screen", screen);
+            navController.navigate(R.id.list_to_info, bundle);
+        });
+
+        textFilter = view.findViewById(R.id.searchbar_text);
+        textFilter.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filterData(editable.toString());
+            }
         });
 
         return view;
@@ -91,7 +113,7 @@ public class ListRecipeFragment extends Fragment implements RecyclerAdapter.OnNo
         layoutManager = new GridLayoutManager(this.getActivity(), 2);
         recipeRV.setLayoutManager(layoutManager);
         //create a new recycler view adapter
-        adapterRV = new RecyclerAdapter(Recipe.recipeArrayList, this, this);
+        adapterRV = new RecyclerAdapter(recipeList, this, this);
         favoritesAdapterRV = new RecyclerAdapter(Recipe.favoritesArrayList, this, this);
         // set the recycler view's adapter
         if(screen == 0)
@@ -134,6 +156,7 @@ public class ListRecipeFragment extends Fragment implements RecyclerAdapter.OnNo
             }
         sortLists();
         System.out.println("Array Size: " + Recipe.recipeArrayList.size());
+        recipeList.addAll(Recipe.recipeArrayList);
     }
 
     public void sortLists() {
@@ -155,5 +178,18 @@ public class ListRecipeFragment extends Fragment implements RecyclerAdapter.OnNo
                 return r1Name.compareTo(r2Name);
             }
         });
+    }
+
+    public void filterData(String filter) {
+        ArrayList<Recipe> temp = new ArrayList<>();
+        for(Recipe recipe: recipeList) {
+            //or use .equal(text) with you want equal match
+            //use .toLowerCase() for better matches
+            if(recipe.recipeName.toLowerCase().contains(filter.toLowerCase())){
+                temp.add(recipe);
+            }
+        }
+        //update recyclerview
+        adapterRV.updateList(temp);
     }
 }

@@ -17,9 +17,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class RecipeInfoFragment extends Fragment {
-
-    private ArrayList<Recipe> recipeList = new ArrayList<>();
-    private ArrayList<Recipe> favoritesList = new ArrayList<>();
     private int position;
     private int screen;
     private NavController navController;
