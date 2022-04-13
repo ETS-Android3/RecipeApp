@@ -15,11 +15,11 @@
             android:id="@+id/recipeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
+            android:layout_centerInParent="true"
             android:text="Add Recipe"
             android:textColor="@color/menu_background"
-            android:layout_centerInParent="true"
-            android:textSize="32sp"/>
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/button_cancel"
