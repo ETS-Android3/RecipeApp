@@ -21,6 +21,7 @@ public class RecipeArchive {
     @SuppressLint("UseCompatLoadingForDrawables")
     public ArrayList<Recipe> createInitialRecipes() {
         /*********EXAMPLE OF HOW TO ADD A RECIPE:*********/
+
         // Array of String[] for ingredients
         String[] ingredients = {"1 pound lean ground meat",
                 "3 tablespoons olive oil",
@@ -135,6 +136,7 @@ public class RecipeArchive {
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
                 ingredients, instructions));
 
+        // Beef Stir Fry
         ingredients = new String[] {"1 1/2 pounds skirt steak, cut into 4-inch-long pieces, then cut against the grain into 1/4-inch-thick slices",
                  "Salt and freshly ground pepper",
                  "1/4 cup low-sodium soy sauce",
@@ -158,6 +160,7 @@ public class RecipeArchive {
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
                 ingredients, instructions));
 
+        // Chocolate Chip Cookie
         ingredients = new String[] {"1 cup Butter or margarine, softened",
                 "3/4 cup Sugar",
                 "3/4 cup Brown Sugar",
@@ -181,6 +184,7 @@ public class RecipeArchive {
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
                 ingredients, instructions));
 
+        // Blueberries Muffin
         ingredients = new String[] {"1/2 cup Butter",
                 "1 1/4 cup Sugar",
                 "2 Eggs",
@@ -201,6 +205,7 @@ public class RecipeArchive {
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
                 ingredients, instructions));
 
+        // Popover
         ingredients = new String[] {
                 "3 Eggs",
                 "1 1/2 cups Flour",
@@ -216,6 +221,7 @@ public class RecipeArchive {
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
                 ingredients, instructions));
 
+        // Waffles
         ingredients = new String[] {
                 "2 cups Milk",
                 "1 stick Unsalted Butter",
@@ -245,6 +251,7 @@ public class RecipeArchive {
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
                 ingredients, instructions));
 
+        // Pancakes
         ingredients = new String[] {"3 tablespoons Butter",
                 "1 tablespoon Sugar",
                 "1 Egg",
@@ -260,6 +267,7 @@ public class RecipeArchive {
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
                 ingredients, instructions));
 
+        // French Toast
         ingredients = new String[] {"1 teaspoon Ground Cinnamon",
                 "1/4 teaspoon Ground Nutmeg",
                 "4 Eggs",
@@ -277,6 +285,7 @@ public class RecipeArchive {
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
                 ingredients, instructions));
 
+        // Brownies
         ingredients = new String[] {"1/2 cup Butter",
                 "1 cup Sugar",
                 "2 Eggs",
@@ -294,6 +303,7 @@ public class RecipeArchive {
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
                 ingredients, instructions));
 
+        // Nachos
         ingredients = new String[] {"1 pound Ground Beef",
                 "1 Onion, Diced",
                 "Salt and Pepper",
@@ -310,6 +320,7 @@ public class RecipeArchive {
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
                 ingredients, instructions));
 
+        // Salad
         ingredients = new String[] {"1 tablespoon Butter",
                 "3/4 cup Almonds",
                 "1 pound Spinach",
@@ -331,6 +342,7 @@ public class RecipeArchive {
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
                 ingredients, instructions));
 
+        // Fries
         ingredients = new String[] {"1/2 cup Sugar",
                 "2 cups Warm Water",
                 "2 Large Russet Potatoes, peeled, and sliced into 1/4 inch strips ",
@@ -344,6 +356,7 @@ public class RecipeArchive {
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
                 ingredients, instructions));
 
+        // Lobster Roll
         ingredients = new String[] {"1 8 oz package Lobster Meat",
                 "1/4 cup Mayonnaise",
                 "1 tablespoon Finely Chopped Red Onion",
@@ -359,6 +372,7 @@ public class RecipeArchive {
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
                 ingredients, instructions));
 
+        // Grilled Cheese Sandwich
         ingredients = new String[] {"2 slices Bread",
                 "2 sloces American Cheese",
                 "2 teaspoons Brown Sugar",
@@ -370,6 +384,7 @@ public class RecipeArchive {
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
                 ingredients, instructions));
 
+        // Apple Pie
         ingredients = new String[] {"1 tablespoon Butter",
                 "3/4 cup Sugar",
                 "2 tablespoons Flour",
@@ -393,6 +408,7 @@ public class RecipeArchive {
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
                 ingredients, instructions));
 
+        // Banana Bread
         ingredients = new String[] {"2 sticks Butter",
                 "3 cups Sugar",
                 "4 Eggs",
@@ -414,6 +430,7 @@ public class RecipeArchive {
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
                 ingredients, instructions));
 
+        // Jjajangmyeon
         ingredients = new String[] {"Jjajangmyeon noodles",
                 "½ pound pork belly, cut into ½ inch cubes (about 1½ cups’ worth)",
                 "1 cup of Korean radish (or daikon), cut into ½ inch cubes (about 1 cup’s worth)",
@@ -440,6 +457,107 @@ public class RecipeArchive {
         imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.jjajangmyeon);
 
         recipes.add(new Recipe(recipes.size()+1,"Jjajangmyeon",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
+
+        // Fried Rice
+        ingredients = new String[] {"White long grain rice",
+                "Small white onion",
+                "Peas",
+                "Carrots",
+                "Eggs",
+                "Sesame Oil",
+                "Soy Sauce",
+                "Green Onions"};
+
+        instructions = new String[] {"Turn your skillet to medium high heat and pour sesame oil into the bottom of your skillet and add the onion, peas and carrots.",
+                "Fry this until they are tender.", "Pour the beaten eggs onto the other side.", "Use a spatula to scramble the eggs", "Mix them together with the veggies",
+                "Combine it with the veggie and egg mixture.", "Pour the soy sauce on top and stir until it is heated throughout.", "Garnish with green onions."};
+
+
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.fried_rice);
+
+        recipes.add(new Recipe(recipes.size()+1,"Fried Rice",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
+
+        // Chicken Pot Pie
+        ingredients = new String[] {"1/3 cup butter or margarine",
+                "1/3 cup chopped onion",
+                "1/3 cup all-purpose flour",
+                "1/2 teaspoon salt",
+                "1/4 teaspoon pepper",
+                "1 3/4 cups Progresso™ chicken broth (from 32-oz carton)",
+                "1/2 cup milk",
+                "2 1/2 cups shredded cooked chicken or turkey",
+                "2 cups frozen mixed vegetables, thawed"};
+
+        instructions = new String[] {"Heat oven to 425°F. Prepare pie crusts as directed on box for Two-Crust Pie using 9-inch glass pie pan.", "\n" +
+                "In 2-quart saucepan, melt butter over medium heat. Add onion; cook 2 minutes, stirring frequently, until tender. Stir in flour, salt and pepper until well blended. Gradually stir in broth and milk, cooking and stirring until bubbly and thickened.",
+                "Stir in chicken and mixed vegetables. Remove from heat. Spoon chicken mixture into crust-lined pan. Top with second crust; seal edge and flute. Cut slits in several places in top crust.",
+                "Bake 30 to 40 minutes or until crust is golden brown. During last 15 to 20 minutes of baking, cover crust edge with strips of foil to prevent excessive browning. Let stand 5 minutes before serving."};
+
+
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.chicken_pot_pie);
+
+        recipes.add(new Recipe(recipes.size()+1,"Chicken Pot Pie",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
+
+        // Broccoli Cheddar Soup
+        ingredients = new String[] {"1 tablespoon butter",
+                "½ onion, chopped",
+                "¼ cup melted butter",
+                "¼ cup flour",
+                "2 cups milk",
+                "2 cups chicken stock",
+                "1 ½ cups coarsely chopped broccoli florets",
+                "1 cup matchstick-cut carrots",
+                "1 stalk celery, thinly sliced",
+                "2 ½ cups shredded sharp Cheddar cheese",
+                "salt and ground black pepper to taste"};
+
+
+        instructions = new String[] {"Melt 1 tablespoon butter in a skillet over medium-high heat. Saute onion in hot butter until translucent, about 5 minutes. Set aside.",
+                "Whisk 1/4 cup melted butter and flour together in a large saucepan over medium-low heat. Continue to whisk and cook , adding 1 to 2 tablespoons of milk if necessary to keep the flour from burning, 3 to 4 minutes.",
+                "Gradually pour milk into flour mixture while whisking constantly. Stir chicken stock into milk mixture. Bring to a simmer; cook until mixture is thickened, about 20 minutes. Add broccoli, carrots, sauteed onion, and celery; simmer until vegetables are tender, about 20 minutes.",
+                "Stir Cheddar cheese into vegetable mixture until cheese melts. Season with salt and pepper to taste."};
+
+
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.broccoli_cheddar);
+
+        recipes.add(new Recipe(recipes.size()+1,"Broccoli Cheddar Soup",
+                Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
+                ingredients, instructions));
+
+        // Korean Fried Chicken
+        ingredients = new String[] {"1.4 kg / 3 pounds whole chicken, cut into pieces or chicken wings / drumsticks / boneless chicken thigh",
+                "2 Tbsp rice wine",
+                "2 tsp minced ginger",
+                "1 tsp fine sea salt",
+                "1/2 tsp ground black pepper",
+                "1 cup potato starch or corn starch",
+                "Some cooking oil for deep frying",
+                "3 Tbsp tomato sauce / ketchup",
+                "2 Tbsp to 2 1/2 Tbsp gochujang (Korean chilli paste)",
+                "1/4 cup honey",
+                "1/4 cup brown sugar",
+                "2 Tbsp soy sauce",
+                "2 Tbsp minced garlic",
+                "1 Tbsp sesame oil"};
+
+
+        instructions = new String[] {"In a bowl, place the chicken, rice wine, ginger, salt and black pepper. Combine them well. Then evenly coat the chicken with the starch and set side.",
+                " In a deep saucepan (or frier) add a generous amount of oil and heat it until the oil temperature reaches 175 C / 347 F (or boiling). Start adding the battered chicken carefully and fry them until they cook (between 3 to 5 mins, depending on the size of chicken). Do not overcrowd the pan. (It might be useful to use a grease splatter screen if you have one. It’s super handy! It minimises oil splatter.)",
+                "Take out the done chicken and place them onto some kitchen paper while frying the remaining chicken pieces. Once the first set of deep frying is completed, quickly scoop out any floating debris from the oil using a skimmer. Then deep fry the chicken again when the oil temperature reaches 175 C / 347 F (or boiling). Fry them until the batter is golden and crisp. (The second time frying is shorter than the first time, 2 to 3 mins) Set aside.",
+                "In a separate saucepan, add in the Korean fried chicken sauce ingredients (listed above). Heat the sauce over low to medium heat and stir well. Once it starts bubbling, remove the pan from the heat.",
+                "Place the double fried chicken into a large mixing bowl then pour the fried chicken sauce over the chicken to coat. Mix them lightly and thoroughly. Alternatively, serve the fried chicken and the sauce separately and use the sauce as a dipping sauce.",
+                "Once all the chicken is coated with the sauce, serve it hot immediately."};
+
+
+        imageUri = getUriToDrawable(listRecipeFragment.getContext(), R.drawable.kfc);
+
+        recipes.add(new Recipe(recipes.size()+1,"Korean Fried Chicken",
                 Recipe.convertUriToByteArray(imageUri, listRecipeFragment.getActivity()),
                 ingredients, instructions));
 
