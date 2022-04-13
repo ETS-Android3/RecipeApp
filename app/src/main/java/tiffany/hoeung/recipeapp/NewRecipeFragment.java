@@ -161,4 +161,5 @@ public class NewRecipeFragment extends Fragment {
             return 1;
         }
     }
+
 }
