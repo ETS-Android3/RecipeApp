@@ -16,7 +16,7 @@ Simple Chef was created with a target audience of home or ameture chefs in mind.
 ## Problem Statement
 
 <p align="justify">
-To be completed by the team members
+Sometimes it is difficult for people to decide what to make for their meals. We are creating an application that would help people decide what to cook for their meals. 
 </p>
 
 
